@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HecosireApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="now_login" >now you can login</string>
+    <string name="preference_file_key">com.hecosire.apppreferences</string>
+    <string name="emailPreferenceKey">emailPreferenceKey</string>
+    <string name="tokenPreferenceKey">tokenPreferenceKey</string>
+
+
+</resources>

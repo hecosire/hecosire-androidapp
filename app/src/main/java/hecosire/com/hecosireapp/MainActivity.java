@@ -88,20 +88,8 @@ public class MainActivity extends Activity {
     }
 
     private boolean login() {
-        SharedPreferences sharedPref = getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-
-        String email = sharedPref.getString(getString(R.string.emailPreferenceKey), "MISSING");
-        String token = sharedPref.getString(getString(R.string.tokenPreferenceKey), "MISSING");
-
-        if ("MISSING".equals(email) || "MISSING".equals(token)) {
-            Intent goToNextActivity = new Intent(getApplicationContext(), LoginActivity.class);
-            startActivity(goToNextActivity);
-            return false;
-        }
-
-        userToken = new UserToken(email, token);
-        return true;
+        userToken = UserToken.getUserToken(this);
+        return userToken != null;
     }
 
     public void unauthorizedException() {

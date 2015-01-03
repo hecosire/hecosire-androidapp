@@ -22,6 +22,14 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" >
         </activity>
+        <activity
+            android:name=".NewReportActivity"
+            android:label="@string/title_activity_new_report"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="hecosire.com.hecosireapp.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -9,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -61,6 +60,11 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void reportHowToFeel(View view) {
+        Intent goToNextActivity = new Intent(getApplicationContext(), NewReportActivity.class);
+        startActivity(goToNextActivity);
     }
 
     public void selfDestruct(View view) {

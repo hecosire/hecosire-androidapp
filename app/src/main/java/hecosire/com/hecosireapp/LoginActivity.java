@@ -8,15 +8,23 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class LoginActivity extends Activity {
+
+    private EditText emailEdit;
+    private EditText passwordEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_login);
+
+        emailEdit = (EditText)findViewById(R.id.emailText);
+        passwordEdit = (EditText)findViewById(R.id.passwordText);
     }
 
 
@@ -43,16 +51,25 @@ public class LoginActivity extends Activity {
     }
 
     public void performLogin(View view) {
+       new LoginTask(this, emailEdit.getText().toString(), passwordEdit.getText().toString()).execute();
 
+    }
+
+    public void loginSuccessful(String email, String token) {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString(getString(R.string.emailPreferenceKey), "FETCHME");
-        editor.putString(getString(R.string.tokenPreferenceKey), "FETCHME");
+        editor.putString(getString(R.string.emailPreferenceKey), email);
+        editor.putString(getString(R.string.tokenPreferenceKey), token);
         editor.commit();
 
         Intent goToNextActivity = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(goToNextActivity);
+
+    }
+
+    public void loginFailed() {
+        Toast.makeText(this, "There was a problem with logging in..", Toast.LENGTH_LONG).show();
     }
 }

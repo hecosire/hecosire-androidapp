@@ -8,12 +8,22 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends Activity {
 
     private UserToken userToken;
+    private ListView listView;
 
 
     @Override
@@ -21,6 +31,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
+        listView = (ListView)findViewById(R.id.listView);
+
         if (login()) {
             new RetrieveRecordsTask(this, userToken).execute();
         }
@@ -90,5 +103,30 @@ public class MainActivity extends Activity {
     public void unauthorizedException() {
         Toast.makeText(this, "There is a problem with your credentials. Please login again.", Toast.LENGTH_LONG).show();
         logout();
+    }
+
+    public void userRecords(JSONArray feed) {
+
+        final ArrayList<String> list = new ArrayList<String>();
+
+        for (int i = 0; i < feed.length(); i++) {
+             try {
+                JSONObject jsonobject = feed.getJSONObject(i);
+                JSONObject health_state = jsonobject.getJSONObject("health_state");
+
+                String result = health_state.getString("name");
+
+                list.add(result);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+
+        ArrayAdapter adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                list);
+        listView.setAdapter(adapter);
     }
 }

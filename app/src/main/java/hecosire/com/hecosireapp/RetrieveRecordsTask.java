@@ -9,6 +9,8 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.params.BasicHttpParams;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -18,7 +20,7 @@ class UnauthorizedException extends Exception {
 
 }
 
-public class RetrieveRecordsTask extends AsyncTask<String, Void, String> {
+public class RetrieveRecordsTask extends AsyncTask<String, Void, JSONArray> {
 
     private Exception exception;
     private MainActivity activity;
@@ -30,7 +32,7 @@ public class RetrieveRecordsTask extends AsyncTask<String, Void, String> {
         this.token = token;
     }
 
-    protected String doInBackground(String... urls) {
+    protected JSONArray doInBackground(String... urls) {
         DefaultHttpClient httpclient = new DefaultHttpClient(new BasicHttpParams());
         HttpGet httppost = new HttpGet("http://hecosire.com/api/v1/records");
 // Depends on your web service
@@ -61,7 +63,7 @@ public class RetrieveRecordsTask extends AsyncTask<String, Void, String> {
                 sb.append(line + "\n");
             }
             result = sb.toString();
-            return result;
+            return new JSONArray(result);
 
         } catch (Exception e) {
             this.exception = e;
@@ -79,12 +81,16 @@ public class RetrieveRecordsTask extends AsyncTask<String, Void, String> {
 
     }
 
-    protected void onPostExecute(String feed) {
+    protected void onPostExecute(JSONArray feed) {
         if (exception != null && exception instanceof UnauthorizedException) {
             activity.unauthorizedException();
             return;
         }
 
-        Toast.makeText(activity, "test" + feed, Toast.LENGTH_LONG).show();
+        if (exception != null) {
+            return;
+        }
+
+        activity.userRecords(feed);
     }
 }

@@ -21,6 +21,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        if (login()) {
+            new RetrieveRecordsTask(this, userToken).execute();
+        }
     }
 
 
@@ -39,15 +42,12 @@ public class MainActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+            logout();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void performLogout(View view) {
-        logout();
     }
 
     public void selfDestruct(View view) {
@@ -67,9 +67,10 @@ public class MainActivity extends Activity {
         editor.remove(getString(R.string.tokenPreferenceKey));
         editor.commit();
         userToken = null;
+        login();
     }
 
-    private void login() {
+    private boolean login() {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
@@ -79,14 +80,15 @@ public class MainActivity extends Activity {
         if ("MISSING".equals(email) || "MISSING".equals(token)) {
             Intent goToNextActivity = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(goToNextActivity);
+            return false;
         }
 
         userToken = new UserToken(email, token);
+        return true;
     }
 
     public void unauthorizedException() {
         Toast.makeText(this, "There is a problem with your credentials. Please login again.", Toast.LENGTH_LONG).show();
         logout();
-        login();
     }
 }

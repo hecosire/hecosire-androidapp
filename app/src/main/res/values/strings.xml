@@ -9,6 +9,7 @@
     <string name="preference_file_key">com.hecosire.apppreferences</string>
     <string name="emailPreferenceKey">emailPreferenceKey</string>
     <string name="tokenPreferenceKey">tokenPreferenceKey</string>
+    <string name="action_logout">Logout</string>
 
 
 </resources>

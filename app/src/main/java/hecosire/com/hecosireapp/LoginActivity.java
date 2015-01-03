@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -52,6 +53,12 @@ public class LoginActivity extends Activity {
 
     }
 
+
+    public void createNewAccount(View view) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://hecosire.com/users/sign_up"));
+        startActivity(browserIntent);
+    }
+
     public void loginSuccessful(String email, String token) {
         SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.preference_file_key), Context.MODE_PRIVATE);
@@ -65,6 +72,7 @@ public class LoginActivity extends Activity {
         startActivity(goToNextActivity);
 
     }
+
 
     public void loginFailed() {
         Toast.makeText(this, "There was a problem with logging in..", Toast.LENGTH_LONG).show();

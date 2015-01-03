@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -46,15 +47,7 @@ public class MainActivity extends Activity {
     }
 
     public void performLogout(View view) {
-
-        SharedPreferences sharedPref = getSharedPreferences(
-                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
-
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.remove(getString(R.string.emailPreferenceKey));
-        editor.remove(getString(R.string.tokenPreferenceKey));
-        editor.commit();
-        userToken = null;
+        logout();
     }
 
     public void selfDestruct(View view) {
@@ -63,6 +56,17 @@ public class MainActivity extends Activity {
         }
         new RetrieveRecordsTask(this, userToken).execute();
 
+    }
+
+    private void logout() {
+        SharedPreferences sharedPref = getSharedPreferences(
+                getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.remove(getString(R.string.emailPreferenceKey));
+        editor.remove(getString(R.string.tokenPreferenceKey));
+        editor.commit();
+        userToken = null;
     }
 
     private void login() {
@@ -78,5 +82,11 @@ public class MainActivity extends Activity {
         }
 
         userToken = new UserToken(email, token);
+    }
+
+    public void unauthorizedException() {
+        Toast.makeText(this, "There is a problem with your credentials. Please login again.", Toast.LENGTH_LONG).show();
+        logout();
+        login();
     }
 }

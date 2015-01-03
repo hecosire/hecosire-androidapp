@@ -63,7 +63,7 @@ public class LoginTask extends AsyncTask<String, Void, String[]> {
 
             result[0] =  jsonResponse.getString("email");
             result[1] =  jsonResponse.getString("auth_token");
-            
+
             return result;
 
         } catch (Exception e) {

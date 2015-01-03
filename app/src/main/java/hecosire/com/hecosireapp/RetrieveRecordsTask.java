@@ -14,6 +14,10 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+class UnauthorizedException extends Exception {
+
+}
+
 public class RetrieveRecordsTask extends AsyncTask<String, Void, String> {
 
     private Exception exception;
@@ -39,6 +43,12 @@ public class RetrieveRecordsTask extends AsyncTask<String, Void, String> {
         String result = null;
         try {
             HttpResponse response = httpclient.execute(httppost);
+
+            if (response.getStatusLine().getStatusCode() == 401) {
+                throw new UnauthorizedException();
+            }
+
+
             HttpEntity entity = response.getEntity();
 
             inputStream = entity.getContent();
@@ -70,7 +80,11 @@ public class RetrieveRecordsTask extends AsyncTask<String, Void, String> {
     }
 
     protected void onPostExecute(String feed) {
-        // TODO: check this.exception
+        if (exception != null && exception instanceof UnauthorizedException) {
+            activity.unauthorizedException();
+            return;
+        }
+
         Toast.makeText(activity, "test" + feed, Toast.LENGTH_LONG).show();
     }
 }

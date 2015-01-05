@@ -7,12 +7,12 @@
 
     <ImageView
         android:id="@+id/logo_tram"
-        android:layout_width="23px"
-        android:layout_height="23px"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:clickable="false"
-        android:src="@drawable/ic_launcher" />
+        android:layout_width="46px"
+        android:layout_height="46px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:clickable="true"
+        android:src="@drawable/right_bottom" />
 
     <TextView
         android:id="@+id/app_name"

@@ -5,12 +5,15 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 
 
 import com.sonyericsson.extras.liveware.aef.control.Control;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlExtension;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlObjectClickEvent;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlTouchEvent;
+import com.sonyericsson.extras.liveware.extension.util.control.ControlView;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlViewGroup;
 
 import hecosire.com.hecosireapp.R;
@@ -47,7 +50,7 @@ class SampleControlSmartWatch2 extends ControlExtension {
             throw new IllegalArgumentException("handler == null");
         }
         mHandler = handler;
-        //setupClickables(context);
+        setupClickables(context);
     }
 
     public void setWatchEvent(int viewLabelId, String event) {
@@ -97,7 +100,9 @@ class SampleControlSmartWatch2 extends ControlExtension {
 
         Bundle b1 = new Bundle();
         b1.putInt(Control.Intents.EXTRA_LAYOUT_REFERENCE, R.id.tram_information_1);
+        b1.putString(Control.Intents.EXTRA_TEXT, "1");
 
+        sendText(R.id.tram_information_1, "testing");
 
 
         Bundle[] data = new Bundle[4];
@@ -153,26 +158,26 @@ class SampleControlSmartWatch2 extends ControlExtension {
 
 
 
-//
-//    private void setupClickables(Context context) {
-//        LayoutInflater inflater = (LayoutInflater) context.getSystemService
-//                (Context.LAYOUT_INFLATER_SERVICE);
-//        View layout = inflater.inflate(R.layout.sample_control_2
-//                , null);
-//        mLayout = (ControlViewGroup) parseLayout(layout);
-//        if (mLayout != null) {
-//            ControlView bottomRight = mLayout.findViewById(R.id.sample_control_object_4);
-//            bottomRight.setOnClickListener(new OnClickListener() {
-//                @Override
-//                public void onClick() {
-//                    fetchDataAboutTrams();
-////                    sendImage(R.id.sample_control_object_4, R.drawable.right_bottom_selected);
-////                    mHandler.postDelayed(new SelectToggler(R.id.sample_control_object_4,
-////                            R.drawable.right_bottom), SELECT_TOGGLER_MS);
-//                }
-//            });
-//        }
-//    }
+
+    private void setupClickables(Context context) {
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService
+                (Context.LAYOUT_INFLATER_SERVICE);
+        View layout = inflater.inflate(R.layout.sample_control_2
+                , null);
+        mLayout = (ControlViewGroup) parseLayout(layout);
+        if (mLayout != null) {
+            ControlView bottomRight = mLayout.findViewById(R.id.logo_tram);
+            bottomRight.setOnClickListener(new ControlView.OnClickListener() {
+                @Override
+                public void onClick() {
+
+//                    sendImage(R.id.sample_control_object_4, R.drawable.right_bottom_selected);
+//                    mHandler.postDelayed(new SelectToggler(R.id.sample_control_object_4,
+//                            R.drawable.right_bottom), SELECT_TOGGLER_MS);
+                }
+            });
+        }
+    }
 
     private int getIntPreference(int key, String default_value, SharedPreferences prefs) {
         try {

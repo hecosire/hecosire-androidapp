@@ -368,7 +368,7 @@ public abstract class ControlExtension {
      * @param layoutId The layout resource id.
      * @param layoutData The layout data.
      */
-    protected void showLayout(final int layoutId, final Bundle[] layoutData) {
+    public void showLayout(final int layoutId, final Bundle[] layoutData) {
         if (Dbg.DEBUG) {
             Dbg.d("showLayout");
         }
@@ -427,7 +427,7 @@ public abstract class ControlExtension {
      * @param layoutReference The referenced resource within the current layout.
      * @param resourceId The image resource id.
      */
-    protected void sendText(final int layoutReference, final String text) {
+    public void sendText(final int layoutReference, final String text) {
         if (Dbg.DEBUG) {
             Dbg.d("sendText: " + text);
         }

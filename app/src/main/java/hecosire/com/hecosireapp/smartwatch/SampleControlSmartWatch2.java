@@ -2,8 +2,6 @@ package hecosire.com.hecosireapp.smartwatch;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,23 +15,26 @@ import com.sonyericsson.extras.liveware.extension.util.control.ControlView;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlViewGroup;
 
 import hecosire.com.hecosireapp.R;
+import hecosire.com.hecosireapp.UserToken;
+import hecosire.com.hecosireapp.smartwatch.state.ExtensionState;
+import hecosire.com.hecosireapp.smartwatch.state.LoggedInState;
+import hecosire.com.hecosireapp.smartwatch.state.NotLoggedInState;
 
 /**
  * The sample control for SmartWatch handles the control on the accessory. This
  * class exists in one instance for every supported host application that we
  * have registered to
  */
-class SampleControlSmartWatch2 extends ControlExtension {
-
+public class SampleControlSmartWatch2 extends ControlExtension {
 
 
     private Handler mHandler;
 
-
-
     private ControlViewGroup mLayout = null;
 
     private Context _context;
+
+    private ExtensionState extensionState;
 
     /**
      * Create sample control.
@@ -50,11 +51,22 @@ class SampleControlSmartWatch2 extends ControlExtension {
             throw new IllegalArgumentException("handler == null");
         }
         mHandler = handler;
+        figureOutState();
         setupClickables(context);
     }
 
     public void setWatchEvent(int viewLabelId, String event) {
         sendText(viewLabelId, event);
+    }
+
+    private void figureOutState() {
+        UserToken token = UserToken.getUserToken(_context);
+        if (token != null) {
+            extensionState = new LoggedInState(this);
+        } else {
+            extensionState = new NotLoggedInState(this);
+        }
+
     }
 
     /**
@@ -96,20 +108,8 @@ class SampleControlSmartWatch2 extends ControlExtension {
 
     @Override
     public void onResume() {
-        Log.d(SampleExtensionService.LOG_TAG, "Starting animation");
-
-        Bundle b1 = new Bundle();
-        b1.putInt(Control.Intents.EXTRA_LAYOUT_REFERENCE, R.id.tram_information_1);
-        b1.putString(Control.Intents.EXTRA_TEXT, "1");
-
-        sendText(R.id.tram_information_1, "testing");
-
-
-        Bundle[] data = new Bundle[4];
-
-        data[0] = b1;
-
-        showLayout(R.layout.sample_control_2, data);
+        figureOutState();
+        extensionState.onResume();
 
         //fetchDataAboutTrams();
         //startAnimation();
@@ -182,13 +182,5 @@ class SampleControlSmartWatch2 extends ControlExtension {
         }
     }
 
-    private int getIntPreference(int key, String default_value, SharedPreferences prefs) {
-        try {
-            return Integer.parseInt( prefs.getString(_context.getText(key).toString(), default_value));
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return 0;
-        }
-    }
 
 }

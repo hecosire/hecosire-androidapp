@@ -8,6 +8,8 @@ import com.sonyericsson.extras.liveware.extension.util.control.ControlExtension;
 import com.sonyericsson.extras.liveware.extension.util.registration.DeviceInfoHelper;
 import com.sonyericsson.extras.liveware.extension.util.registration.RegistrationInformation;
 
+import hecosire.com.hecosireapp.UserToken;
+
 /**
  * The Sample Extension Service handles registration and keeps track of all
  * controls on all accessories.
@@ -56,7 +58,8 @@ public class SampleExtensionService extends ExtensionService {
                 this, hostAppPackageName);
         if (advancedFeaturesSupported) {
             return new SampleControlSmartWatch2(hostAppPackageName, this, new Handler());
-        }         throw new IllegalArgumentException("No control for: " + hostAppPackageName);
+        }
+        throw new IllegalArgumentException("No control for: " + hostAppPackageName);
 
     }
 }

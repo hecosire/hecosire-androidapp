@@ -23,7 +23,7 @@
         android:layout_marginLeft="25px"
         android:layout_marginTop="0px"
         android:textColor="@android:color/white"
-        android:text="How are you feeling?"
+        android:text="Login on your phone.."
         android:textSize="@dimen/smart_watch_2_text_size_large" />
 
     <TextView

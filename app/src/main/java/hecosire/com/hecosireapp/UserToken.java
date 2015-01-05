@@ -10,16 +10,16 @@ public class UserToken {
     private String email;
     private String token;
 
-    public static UserToken getUserToken(Activity activity) {
-        SharedPreferences sharedPref = activity.getSharedPreferences(
-                activity.getString(R.string.preference_file_key), Context.MODE_PRIVATE);
+    public static UserToken getUserToken(Context context) {
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                context.getString(R.string.preference_file_key), Context.MODE_PRIVATE);
 
-        String email = sharedPref.getString(activity.getString(R.string.emailPreferenceKey), "MISSING");
-        String token = sharedPref.getString(activity.getString(R.string.tokenPreferenceKey), "MISSING");
+        String email = sharedPref.getString(context.getString(R.string.emailPreferenceKey), "MISSING");
+        String token = sharedPref.getString(context.getString(R.string.tokenPreferenceKey), "MISSING");
 
         if ("MISSING".equals(email) || "MISSING".equals(token)) {
-            Intent goToNextActivity = new Intent(activity.getApplicationContext(), LoginActivity.class);
-            activity.startActivity(goToNextActivity);
+            Intent goToNextActivity = new Intent(context.getApplicationContext(), LoginActivity.class);
+            context.startActivity(goToNextActivity);
             return null;
         }
 

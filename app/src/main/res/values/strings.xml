@@ -16,9 +16,10 @@
     <string name="extension_name">HeCoSiRe</string>
     <string name="configuration_text">HeCoSiRe settings</string>
 
+    <string name="preference_activity_title">HeCoSiRe settings</string>
     <string name="preference_option_read_me">READ ME</string>
     <!-- Read me text shown in dialog -->
-    <string name="preference_option_read_me_txt">You can display next tram ride for up to 4 tram stops. Get route id and stop id from http://www.yarratrams.com.au/on-your-computer/webpid/.</string>
+    <string name="preference_option_read_me_txt">Hello world</string>
 
 
 </resources>

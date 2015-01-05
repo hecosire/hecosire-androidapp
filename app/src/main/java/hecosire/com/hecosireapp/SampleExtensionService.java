@@ -17,7 +17,7 @@ import com.sonyericsson.extras.liveware.extension.util.registration.Registration
  */
 public class SampleExtensionService extends ExtensionService {
 
-    public static final String EXTENSION_KEY = "com.sonymobile.smartconnect.extension.samplecontrol.key";
+    public static final String EXTENSION_KEY = "hecosire.com.hecosireapp.extension.samplecontrol.key";
 
     public static final String LOG_TAG = "SampleControlExtension";
 

@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import hecosire.com.hecosireapp.smartwatch.HealthyState;
+
 
 public class NewReportActivity extends Activity {
 
@@ -39,19 +41,19 @@ public class NewReportActivity extends Activity {
     }
 
     public void reportHealthy(View view) {
-        new NewReportTask(this, userToken).execute(1);
+        new NewReportTask(this, userToken).execute(HealthyState.HEALTHY);
     }
 
     public void reportComingDown(View view) {
-        new NewReportTask(this, userToken).execute(2);
+        new NewReportTask(this, userToken).execute(HealthyState.COMING_DOWN);
     }
 
     public void reportSick(View view) {
-        new NewReportTask(this, userToken).execute(3);
+        new NewReportTask(this, userToken).execute(HealthyState.SICK);
     }
 
     public void reportRecovering(View view) {
-        new NewReportTask(this, userToken).execute(4);
+        new NewReportTask(this, userToken).execute(HealthyState.RECOVERING);
     }
 
 }

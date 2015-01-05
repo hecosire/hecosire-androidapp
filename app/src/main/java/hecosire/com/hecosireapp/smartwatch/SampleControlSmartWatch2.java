@@ -30,11 +30,11 @@ public class SampleControlSmartWatch2 extends ControlExtension {
 
     private Handler mHandler;
 
-    private ControlViewGroup mLayout = null;
-
     private Context _context;
 
     private ExtensionState extensionState;
+    private LoggedInState extensionStateLoggedIn;
+    private NotLoggedInState extensionStateNotLoggedIn;
 
     /**
      * Create sample control.
@@ -51,8 +51,9 @@ public class SampleControlSmartWatch2 extends ControlExtension {
             throw new IllegalArgumentException("handler == null");
         }
         mHandler = handler;
+        extensionStateLoggedIn = new LoggedInState(this, context);
+        extensionStateNotLoggedIn = new NotLoggedInState(this, context);
         figureOutState();
-        setupClickables(context);
     }
 
     public void setWatchEvent(int viewLabelId, String event) {
@@ -62,9 +63,10 @@ public class SampleControlSmartWatch2 extends ControlExtension {
     private void figureOutState() {
         UserToken token = UserToken.getUserToken(_context);
         if (token != null) {
-            extensionState = new LoggedInState(this);
+            extensionStateLoggedIn.setToken(token);
+            extensionState = extensionStateLoggedIn;
         } else {
-            extensionState = new NotLoggedInState(this);
+            extensionState = extensionStateNotLoggedIn;
         }
 
     }
@@ -138,7 +140,7 @@ public class SampleControlSmartWatch2 extends ControlExtension {
     public void onObjectClick(final ControlObjectClickEvent event) {
         Log.d(SampleExtensionService.LOG_TAG, "onObjectClick() " + event.getClickType());
         if (event.getLayoutReference() != -1) {
-            mLayout.onClick(event.getLayoutReference());
+            extensionState.onClick(event.getLayoutReference());
         }
     }
 
@@ -156,31 +158,6 @@ public class SampleControlSmartWatch2 extends ControlExtension {
     }
 
 
-
-
-
-    private void setupClickables(final Context context) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService
-                (Context.LAYOUT_INFLATER_SERVICE);
-        View layout = inflater.inflate(R.layout.sample_control_2
-                , null);
-        mLayout = (ControlViewGroup) parseLayout(layout);
-        if (mLayout != null) {
-            ControlView bottomRight = mLayout.findViewById(R.id.logo_tram);
-            bottomRight.setOnClickListener(new ControlView.OnClickListener() {
-                @Override
-                public void onClick() {
-                    Intent goToNextActivity = new Intent(context, SamplePreferenceActivity.class);
-                    goToNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(goToNextActivity);
-
-//                    sendImage(R.id.sample_control_object_4, R.drawable.right_bottom_selected);
-//                    mHandler.postDelayed(new SelectToggler(R.id.sample_control_object_4,
-//                            R.drawable.right_bottom), SELECT_TOGGLER_MS);
-                }
-            });
-        }
-    }
 
 
 }

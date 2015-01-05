@@ -633,7 +633,7 @@ public abstract class ControlExtension {
      *
      * @param intent The intent to send.
      */
-    protected void sendToHostApp(final Intent intent) {
+    public void sendToHostApp(final Intent intent) {
         intent.putExtra(Control.Intents.EXTRA_AEA_PACKAGE_NAME, mContext.getPackageName());
         intent.setPackage(mHostAppPackageName);
         mContext.sendBroadcast(intent, Registration.HOSTAPP_PERMISSION);
@@ -718,7 +718,7 @@ public abstract class ControlExtension {
         return false;
     }
 
-    protected ControlViewGroup parseLayout(View v) {
+    public ControlViewGroup parseLayout(View v) {
         ControlViewGroup controlViewGroup = new ControlViewGroup();
         controlViewGroup.addView(new ControlView(v.getId(), v.isClickable(), v.isLongClickable()));
         if (v instanceof ViewGroup) {

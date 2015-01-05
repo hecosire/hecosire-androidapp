@@ -23,7 +23,7 @@
         android:padding="0dp"
         android:textSize="15px"
         android:text="Healthy"
-        android:id="@+id/button8"
+        android:id="@+id/button_healthy"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_marginTop="25px" />
@@ -34,7 +34,7 @@
         android:padding="0dp"
         android:textSize="15px"
         android:text="Coming&#10;Down"
-        android:id="@+id/button9"
+        android:id="@+id/button_coming_down"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="25px" />
@@ -45,7 +45,7 @@
         android:padding="0dp"
         android:textSize="15px"
         android:text="Sick"
-        android:id="@+id/button10"
+        android:id="@+id/button_sick"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
          />
@@ -56,7 +56,7 @@
         android:padding="0dp"
         android:textSize="15px"
         android:text="Recovering"
-        android:id="@+id/button11"
+        android:id="@+id/button_recovering"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         />

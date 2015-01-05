@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/smart_watch_2_control_width"
+    android:layout_height="@dimen/smart_watch_2_control_height"
+    tools:ignore="ContentDescription,PxUsage" >
+
+    <ImageView
+        android:id="@+id/logo_tram"
+        android:layout_width="23px"
+        android:layout_height="23px"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:clickable="false"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="25px"
+        android:layout_marginTop="0px"
+        android:textColor="@android:color/white"
+        android:text="MelbTram"
+        android:textSize="@dimen/smart_watch_2_text_size_large" />
+
+    <TextView
+        android:id="@+id/tram_information_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="12px"
+        android:layout_marginTop="35px"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/smart_watch_2_text_size_medium" />
+
+
+</RelativeLayout>

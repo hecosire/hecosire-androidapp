@@ -83,6 +83,8 @@
     </content>
     <orderEntry type="jdk" jdkName="Android 4.1.2 Sony Add-on SDK 2.1" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="smartExtensionAPI" exported="" />
+    <orderEntry type="module" module-name="smartExtensionUtils" exported="" />
   </component>
 </module>
 

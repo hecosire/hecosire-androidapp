@@ -1,13 +1,13 @@
 package hecosire.com.hecosireapp.smartwatch;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-
 
 import com.sonyericsson.extras.liveware.aef.control.Control;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlExtension;
@@ -159,7 +159,7 @@ class SampleControlSmartWatch2 extends ControlExtension {
 
 
 
-    private void setupClickables(Context context) {
+    private void setupClickables(final Context context) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService
                 (Context.LAYOUT_INFLATER_SERVICE);
         View layout = inflater.inflate(R.layout.sample_control_2
@@ -170,6 +170,9 @@ class SampleControlSmartWatch2 extends ControlExtension {
             bottomRight.setOnClickListener(new ControlView.OnClickListener() {
                 @Override
                 public void onClick() {
+                    Intent goToNextActivity = new Intent(context, SamplePreferenceActivity.class);
+                    goToNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(goToNextActivity);
 
 //                    sendImage(R.id.sample_control_object_4, R.drawable.right_bottom_selected);
 //                    mHandler.postDelayed(new SelectToggler(R.id.sample_control_object_4,

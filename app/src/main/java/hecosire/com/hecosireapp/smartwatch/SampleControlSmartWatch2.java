@@ -1,23 +1,19 @@
-package hecosire.com.hecosireapp;
+package hecosire.com.hecosireapp.smartwatch;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
 
 
 import com.sonyericsson.extras.liveware.aef.control.Control;
-import com.sonyericsson.extras.liveware.extension.util.ExtensionUtils;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlExtension;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlObjectClickEvent;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlTouchEvent;
-import com.sonyericsson.extras.liveware.extension.util.control.ControlView;
-import com.sonyericsson.extras.liveware.extension.util.control.ControlView.OnClickListener;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlViewGroup;
+
+import hecosire.com.hecosireapp.R;
 
 /**
  * The sample control for SmartWatch handles the control on the accessory. This

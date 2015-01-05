@@ -1,6 +1,4 @@
-package hecosire.com.hecosireapp;
-
-import java.util.prefs.Preferences;
+package hecosire.com.hecosireapp.smartwatch;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -18,6 +16,8 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.util.Log;
+
+import hecosire.com.hecosireapp.R;
 
 
 /**

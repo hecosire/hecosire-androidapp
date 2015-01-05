@@ -1,14 +1,11 @@
-package hecosire.com.hecosireapp;
+package hecosire.com.hecosireapp.smartwatch;
 
 import android.os.Handler;
 import android.util.Log;
 
 import com.sonyericsson.extras.liveware.extension.util.ExtensionService;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlExtension;
-import com.sonyericsson.extras.liveware.extension.util.registration.DeviceInfo;
 import com.sonyericsson.extras.liveware.extension.util.registration.DeviceInfoHelper;
-import com.sonyericsson.extras.liveware.extension.util.registration.DisplayInfo;
-import com.sonyericsson.extras.liveware.extension.util.registration.RegistrationAdapter;
 import com.sonyericsson.extras.liveware.extension.util.registration.RegistrationInformation;
 
 /**

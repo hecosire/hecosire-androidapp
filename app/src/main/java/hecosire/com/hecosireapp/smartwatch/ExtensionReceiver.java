@@ -1,9 +1,11 @@
-package hecosire.com.hecosireapp;
+package hecosire.com.hecosireapp.smartwatch;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+
+import hecosire.com.hecosireapp.smartwatch.SampleExtensionService;
 
 /**
  * The extension receiver receives the extension intents and starts the

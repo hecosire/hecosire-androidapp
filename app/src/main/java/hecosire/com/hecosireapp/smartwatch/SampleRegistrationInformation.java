@@ -1,4 +1,4 @@
-package hecosire.com.hecosireapp;
+package hecosire.com.hecosireapp.smartwatch;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,6 +6,8 @@ import android.content.Context;
 import com.sonyericsson.extras.liveware.aef.registration.Registration;
 import com.sonyericsson.extras.liveware.extension.util.ExtensionUtils;
 import com.sonyericsson.extras.liveware.extension.util.registration.RegistrationInformation;
+
+import hecosire.com.hecosireapp.R;
 
 /**
  * Provides information needed during extension registration

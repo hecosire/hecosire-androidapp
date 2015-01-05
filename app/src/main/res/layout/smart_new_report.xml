@@ -17,6 +17,50 @@
         android:text="How are you feeling?"
         android:textSize="@dimen/smart_watch_2_text_size_large" />
 
+    <Button
+        android:layout_width="100px"
+        android:layout_height="70px"
+        android:padding="0dp"
+        android:textSize="15px"
+        android:text="Healthy"
+        android:id="@+id/button8"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="25px" />
+
+    <Button
+        android:layout_width="100px"
+        android:layout_height="70px"
+        android:padding="0dp"
+        android:textSize="15px"
+        android:text="Coming&#10;Down"
+        android:id="@+id/button9"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="25px" />
+
+    <Button
+        android:layout_width="100px"
+        android:layout_height="70px"
+        android:padding="0dp"
+        android:textSize="15px"
+        android:text="Sick"
+        android:id="@+id/button10"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+         />
+
+    <Button
+        android:layout_width="100px"
+        android:layout_height="70px"
+        android:padding="0dp"
+        android:textSize="15px"
+        android:text="Recovering"
+        android:id="@+id/button11"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        />
+
 
 
 </RelativeLayout>

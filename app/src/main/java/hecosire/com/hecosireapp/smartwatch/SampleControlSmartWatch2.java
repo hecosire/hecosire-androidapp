@@ -14,6 +14,7 @@ import com.sonyericsson.extras.liveware.extension.util.control.ControlTouchEvent
 import com.sonyericsson.extras.liveware.extension.util.control.ControlView;
 import com.sonyericsson.extras.liveware.extension.util.control.ControlViewGroup;
 
+import hecosire.com.hecosireapp.MyApplication;
 import hecosire.com.hecosireapp.R;
 import hecosire.com.hecosireapp.UserToken;
 import hecosire.com.hecosireapp.smartwatch.state.ExtensionState;
@@ -115,6 +116,7 @@ public class SampleControlSmartWatch2 extends ControlExtension {
 
         //fetchDataAboutTrams();
         //startAnimation();
+        ((MyApplication)_context.getApplicationContext()).reportScreenView("Smartwatch report health");
     }
 
     @Override

@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
 
         if (login()) {
             new RetrieveRecordsTask(this, userToken).execute();
+            ((MyApplication)getApplication()).reportScreenView("Main view");
         }
     }
 

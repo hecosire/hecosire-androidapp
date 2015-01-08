@@ -12,6 +12,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 
 public class LoginActivity extends Activity {
 
@@ -26,6 +29,8 @@ public class LoginActivity extends Activity {
 
         emailEdit = (EditText)findViewById(R.id.emailText);
         passwordEdit = (EditText)findViewById(R.id.passwordText);
+
+        ((MyApplication)getApplication()).reportScreenView("Login view");
     }
 
 

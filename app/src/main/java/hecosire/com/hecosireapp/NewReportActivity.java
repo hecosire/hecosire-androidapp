@@ -19,6 +19,7 @@ public class NewReportActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_report);
         userToken = UserToken.getUserToken(this);
+        ((MyApplication)getApplication()).reportScreenView("New report");
     }
 
 

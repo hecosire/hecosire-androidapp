@@ -17,6 +17,7 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
+import hecosire.com.hecosireapp.MyApplication;
 import hecosire.com.hecosireapp.R;
 
 
@@ -59,7 +60,7 @@ public class SamplePreferenceActivity extends PreferenceActivity  implements
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
+        ((MyApplication)getApplication()).reportScreenView("Smartwatch preferences");
     }
 
     @Override

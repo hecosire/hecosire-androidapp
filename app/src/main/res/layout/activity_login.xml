@@ -8,30 +8,28 @@
 
     <TextView android:text="@string/now_login" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="11pt"
         android:id="@+id/textView2" />
 
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/emailText"
+    <com.iangclifton.android.floatlabel.FloatLabel
         android:layout_below="@+id/textView2"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        />
-
-    <EditText
-        android:layout_width="wrap_content"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="10pt"
+        android:id="@+id/emailText"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/passwordText"
-        android:layout_alignParentLeft="true"
+        android:hint="E-mail" />
+
+
+    <com.iangclifton.android.floatlabel.FloatLabel
         android:layout_below="@+id/emailText"
-        android:layout_alignParentRight="true"
-        />
+        android:inputType="textPassword"
+        android:id="@+id/passwordText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password" />
+
+
 
     <Button
         android:layout_width="wrap_content"
@@ -50,10 +48,20 @@
         android:text="Create new account"
         android:onClick="createNewAccount"
         android:id="@+id/button7"
-        android:layout_below="@+id/button2"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="77dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="You can use HeCoSiRe to track how you feel and get insight into your health."
+        android:id="@+id/textView3"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="51dp" />
 
 
 </RelativeLayout>

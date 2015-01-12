@@ -14,12 +14,14 @@ import android.widget.Toast;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
+import com.iangclifton.android.floatlabel.FloatLabel;
 
 
 public class LoginActivity extends Activity {
 
     private EditText emailEdit;
     private EditText passwordEdit;
+    private View loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +29,12 @@ public class LoginActivity extends Activity {
 
         setContentView(R.layout.activity_login);
 
-        emailEdit = (EditText)findViewById(R.id.emailText);
-        passwordEdit = (EditText)findViewById(R.id.passwordText);
+        emailEdit = ((FloatLabel)findViewById(R.id.emailText)).getEditText();
+        passwordEdit =  ((FloatLabel)findViewById(R.id.passwordText)).getEditText();
+        loginButton = findViewById(R.id.button2);
+
+
+        setTitle("Please login");
 
         ((MyApplication)getApplication()).reportScreenView("Login view");
     }
@@ -54,7 +60,12 @@ public class LoginActivity extends Activity {
     }
 
     public void performLogin(View view) {
-       new LoginTask(this, emailEdit.getText().toString(), passwordEdit.getText().toString()).execute();
+       String email = emailEdit.getText().toString();
+       String password = passwordEdit.getText().toString();
+       if (!email.isEmpty() && !password.isEmpty()) {
+           loginButton.setEnabled(false);
+           new LoginTask(this, email, password).execute();
+       }
 
     }
 
@@ -80,6 +91,7 @@ public class LoginActivity extends Activity {
 
 
     public void loginFailed() {
+        loginButton.setEnabled(true);
         Toast.makeText(this, "There was a problem with logging in..", Toast.LENGTH_LONG).show();
     }
 }

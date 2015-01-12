@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -17,6 +18,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class MainActivity extends Activity {
@@ -31,11 +35,11 @@ public class MainActivity extends Activity {
 
         setContentView(R.layout.activity_main);
 
-        listView = (ListView)findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.listView);
 
         if (login()) {
             new RetrieveRecordsTask(this, userToken).execute();
-            ((MyApplication)getApplication()).reportScreenView("Main view");
+            ((MyApplication) getApplication()).reportScreenView("Main view");
         }
     }
 
@@ -100,26 +104,33 @@ public class MainActivity extends Activity {
 
     public void userRecords(JSONArray feed) {
 
-        final ArrayList<String> list = new ArrayList<String>();
+        List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 
         for (int i = 0; i < feed.length(); i++) {
-             try {
+            try {
                 JSONObject jsonobject = feed.getJSONObject(i);
                 JSONObject health_state = jsonobject.getJSONObject("health_state");
 
-                String result = health_state.getString("name");
+                String name = health_state.getString("name");
+                String created_at = jsonobject.getString("created_at");
 
-                list.add(result);
+                Map<String, String> datum = new HashMap<String, String>(2);
+
+                datum.put("title", name);
+                datum.put("date", created_at);
+                data.add(datum);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-
         }
 
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                list);
+        SimpleAdapter adapter = new SimpleAdapter(this, data,
+                android.R.layout.simple_list_item_2,
+                new String[]{"title", "date"},
+                new int[]{android.R.id.text1,
+                        android.R.id.text2});
         listView.setAdapter(adapter);
     }
 }

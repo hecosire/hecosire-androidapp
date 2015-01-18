@@ -1,6 +1,7 @@
 package hecosire.com.hecosireapp;
 
 import android.app.Application;
+import android.content.Intent;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
@@ -15,6 +16,17 @@ public class MyApplication  extends Application {
     }
 
     HashMap<TrackerName, Tracker> mTrackers = new HashMap<TrackerName, Tracker>();
+
+    public MyApplication() {
+
+    }
+
+    public void onCreate() {
+        super.onCreate();
+        startService(new Intent(this, DailyNotificationService.class));
+    }
+
+
 
     synchronized Tracker getTracker(TrackerName trackerId) {
         if (!mTrackers.containsKey(trackerId)) {

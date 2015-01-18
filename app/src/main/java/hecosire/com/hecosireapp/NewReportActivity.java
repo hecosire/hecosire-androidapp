@@ -1,7 +1,7 @@
 package hecosire.com.hecosireapp;
 
 import android.app.Activity;
-import android.content.Intent;
+import android.app.NotificationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +20,10 @@ public class NewReportActivity extends Activity {
         setContentView(R.layout.activity_new_report);
         userToken = UserToken.getUserToken(this);
         ((MyApplication)getApplication()).reportScreenView("New report");
+
+        NotificationManager mNotifyMgr =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        mNotifyMgr.cancel(DailyNotificationAlarm.NOTIFICATION_ID);
     }
 
 

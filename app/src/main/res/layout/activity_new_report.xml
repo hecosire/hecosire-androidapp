@@ -4,31 +4,38 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/hecosire_background_image"
     tools:context="hecosire.com.hecosireapp.NewReportActivity">
 
     <TextView android:text="@string/how_do_you_feel" android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        android:textColor="#ffffff"
+        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Healthy"
         android:id="@+id/button3"
+        android:layout_marginTop="10px"
         android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:onClick="reportHealthy"
-        />
+
+        android:background="@drawable/buttonshape_selector"
+        android:onClick="reportHealthy" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Coming Down"
         android:id="@+id/button4"
+        android:layout_marginTop="10px"
         android:layout_below="@+id/button3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:background="@drawable/buttonshape_selector"
         android:onClick="reportComingDown"
         />
 
@@ -37,9 +44,11 @@
         android:layout_height="wrap_content"
         android:text="Sick"
         android:id="@+id/button5"
+        android:layout_marginTop="10px"
         android:layout_below="@+id/button4"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:background="@drawable/buttonshape_selector"
         android:onClick="reportSick"
         />
 
@@ -48,9 +57,11 @@
         android:layout_height="wrap_content"
         android:text="Recovering"
         android:id="@+id/button6"
+        android:layout_marginTop="10px"
         android:layout_below="@+id/button5"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:background="@drawable/buttonshape_selector"
         android:onClick="reportRecovering"
         />
 

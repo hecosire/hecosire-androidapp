@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.view.Menu;
@@ -19,10 +20,16 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 
 public class MainActivity extends Activity {
@@ -63,6 +70,12 @@ public class MainActivity extends Activity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
             logout();
+            return true;
+        }
+
+        if (id == R.id.action_website) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://hecosire.com/records"));
+            startActivity(browserIntent);
             return true;
         }
 
@@ -108,6 +121,12 @@ public class MainActivity extends Activity {
 
         List<Map<String, String>> data = new ArrayList<Map<String, String>>();
 
+        String ALT_DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+        SimpleDateFormat sdf = new SimpleDateFormat(
+                ALT_DATE_TIME_FORMAT);
+
+        SimpleDateFormat nicer_sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
+
         for (int i = 0; i < feed.length(); i++) {
             try {
                 JSONObject jsonobject = feed.getJSONObject(i);
@@ -117,15 +136,20 @@ public class MainActivity extends Activity {
                 String created_at = jsonobject.getString("created_at");
 
                 Map<String, String> datum = new HashMap<String, String>(2);
+                Date date = sdf.parse(created_at);
+
+                Calendar instance = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+                instance.setTime(date);
 
                 datum.put("title", name);
-                datum.put("date", created_at);
+                datum.put("date", nicer_sdf.format(instance.getTime()));
                 data.add(datum);
 
             } catch (JSONException e) {
                 e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
-
         }
 
         SimpleAdapter adapter = new SimpleAdapter(this, data,

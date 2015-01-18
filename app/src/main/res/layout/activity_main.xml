@@ -3,6 +3,7 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/hecosire_background_image"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
     <Button
@@ -13,7 +14,9 @@
         android:onClick="reportHowToFeel"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:background="@drawable/buttonshape_selector"
+        />
 
 
     <Button
@@ -25,15 +28,19 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
+        android:background="@drawable/buttonshape_selector"
         />
 
     <ListView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:id="@+id/listView"
+        android:layout_marginTop="20px"
+        android:layout_marginBottom="20px"
         android:layout_below="@+id/reportButton"
         android:layout_above="@+id/button"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/white" />
 
 
 </RelativeLayout>

@@ -20,6 +20,7 @@
     <string name="preference_option_read_me">READ ME</string>
     <!-- Read me text shown in dialog -->
     <string name="preference_option_read_me_txt">Hello world</string>
+    <string name="action_website">Go to website</string>
 
 
 </resources>

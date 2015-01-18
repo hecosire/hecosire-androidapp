@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
@@ -30,7 +31,9 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.activity_login);
 
         emailEdit = ((FloatLabel)findViewById(R.id.emailText)).getEditText();
+        emailEdit.setTextColor(getResources().getColor(R.color.smart_watch_2_text_color_white));
         passwordEdit =  ((FloatLabel)findViewById(R.id.passwordText)).getEditText();
+        passwordEdit.setTextColor(getResources().getColor(R.color.smart_watch_2_text_color_white));
         loginButton = findViewById(R.id.button2);
 
 

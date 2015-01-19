@@ -79,6 +79,11 @@ public class MainActivity extends Activity {
             return true;
         }
 
+        if (id == R.id.action_refresh) {
+            refreshRecords();
+            return true;
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -87,12 +92,16 @@ public class MainActivity extends Activity {
         startActivity(goToNextActivity);
     }
 
-    public void selfDestruct(View view) {
+    public void goToWebSiteStats(View view) {
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://hecosire.com/records/stats"));
+        startActivity(browserIntent);
+    }
+
+    private void refreshRecords() {
         if (userToken == null) {
             login();
         }
         new RetrieveRecordsTask(this, userToken).execute();
-
     }
 
     private void logout() {

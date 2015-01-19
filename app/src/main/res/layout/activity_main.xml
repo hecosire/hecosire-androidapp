@@ -22,9 +22,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Refresh"
+        android:text="See stats"
         android:id="@+id/button"
-        android:onClick="selfDestruct"
+        android:onClick="goToWebSiteStats"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"

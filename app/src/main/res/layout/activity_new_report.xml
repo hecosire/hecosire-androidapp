@@ -15,7 +15,7 @@
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200px"
         android:text="Healthy"
         android:id="@+id/button3"
         android:layout_marginTop="10px"
@@ -28,7 +28,7 @@
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200px"
         android:text="Coming Down"
         android:id="@+id/button4"
         android:layout_marginTop="10px"
@@ -41,7 +41,7 @@
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200px"
         android:text="Sick"
         android:id="@+id/button5"
         android:layout_marginTop="10px"
@@ -54,7 +54,7 @@
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200px"
         android:text="Recovering"
         android:id="@+id/button6"
         android:layout_marginTop="10px"

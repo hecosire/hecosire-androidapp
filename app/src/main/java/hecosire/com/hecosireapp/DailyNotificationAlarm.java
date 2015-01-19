@@ -8,12 +8,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.PowerManager;
 import android.support.v4.app.NotificationCompat;
+import android.util.Log;
 
 import java.util.Calendar;
 
 public class DailyNotificationAlarm extends BroadcastReceiver {
 
     public static int NOTIFICATION_ID = 001;
+    public static int ALARM_ID = 002;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -54,6 +56,8 @@ public class DailyNotificationAlarm extends BroadcastReceiver {
     }
 
     public void SetAlarm(Context context) {
+        CancelAlarm(context);
+
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         Calendar calendar = Calendar.getInstance();
@@ -62,15 +66,23 @@ public class DailyNotificationAlarm extends BroadcastReceiver {
         calendar.set(Calendar.MINUTE, 00);
 
 
-        Intent i = new Intent(context, DailyNotificationAlarm.class);
-        PendingIntent pi = PendingIntent.getBroadcast(context, 0, i, 0);
+        PendingIntent pi = createAlarmPendingIntent(context);
         am.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_HALF_DAY, pi); // Millisec * Second * Minute
     }
 
     public void CancelAlarm(Context context) {
-        Intent intent = new Intent(context, DailyNotificationAlarm.class);
-        PendingIntent sender = PendingIntent.getBroadcast(context, 0, intent, 0);
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.cancel(sender);
+        try {
+            PendingIntent sender = createAlarmPendingIntent(context);
+            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+            alarmManager.cancel(sender);
+        } catch (Exception ex) {
+            Log.e("DailyNotificationAlarm", "Cancel Alarm exception",ex);
+        }
     }
+
+    private PendingIntent createAlarmPendingIntent(Context context) {
+        Intent i = new Intent(context, DailyNotificationAlarm.class);
+        return PendingIntent.getBroadcast(context, ALARM_ID, i, 0);
+    }
+
 }

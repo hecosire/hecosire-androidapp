@@ -35,7 +35,7 @@ public class LoginTask extends AsyncTask<String, Void, String[]> {
         try {
 
             DefaultHttpClient httpclient = new DefaultHttpClient(new BasicHttpParams());
-            HttpPost httppost = new HttpPost("http://hecosire.com/api/v1/users/sign_in");
+            HttpPost httppost = new HttpPost(MyApplication.SIGN_IN_URL);
 
             httppost.setEntity(new StringEntity("{ \"user\": { \"email\":\""+ email +"\",\"password\":\"" +password+ "\"}}"));
             httppost.setHeader("Content-type", "application/json");

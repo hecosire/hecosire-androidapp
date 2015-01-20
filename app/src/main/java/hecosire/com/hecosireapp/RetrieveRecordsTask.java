@@ -34,8 +34,8 @@ public class RetrieveRecordsTask extends AsyncTask<String, Void, JSONArray> {
 
     protected JSONArray doInBackground(String... urls) {
         DefaultHttpClient httpclient = new DefaultHttpClient(new BasicHttpParams());
-        HttpGet httppost = new HttpGet("http://hecosire.com/api/v1/records");
-// Depends on your web service
+        HttpGet httppost = new HttpGet(MyApplication.RECORDS_API_URL);
+
         httppost.setHeader("Content-type", "application/json");
         httppost.setHeader("Accept", "application/json");
         httppost.setHeader("X-User-Token", token.getToken());

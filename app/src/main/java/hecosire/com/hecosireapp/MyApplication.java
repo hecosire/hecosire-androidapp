@@ -2,6 +2,7 @@ package hecosire.com.hecosireapp;
 
 import android.app.Application;
 import android.content.Intent;
+import android.net.Uri;
 
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.HitBuilders;
@@ -10,6 +11,14 @@ import com.google.android.gms.analytics.Tracker;
 import java.util.HashMap;
 
 public class MyApplication  extends Application {
+
+    public static final String TRACKING_ID = "UA-58124371-1";
+
+    public static final String APP_URL = "http://hecosire.com";
+    public static final Uri STATS_URL = Uri.parse(APP_URL + "/records/stats");
+    public static final Uri RECORDS_URL = Uri.parse(APP_URL +"/records");
+    public static final String RECORDS_API_URL = APP_URL + "/api/v1/records";
+    public static final String SIGN_IN_URL =  APP_URL + "api/v1/users/sign_in";
 
     public enum TrackerName {
         APP_TRACKER
@@ -32,7 +41,7 @@ public class MyApplication  extends Application {
         if (!mTrackers.containsKey(trackerId)) {
 
             GoogleAnalytics analytics = GoogleAnalytics.getInstance(this);
-            Tracker t = analytics.newTracker("UA-58124371-1");
+            Tracker t = analytics.newTracker(TRACKING_ID);
 
             mTrackers.put(trackerId, t);
 

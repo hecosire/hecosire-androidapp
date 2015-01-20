@@ -30,7 +30,7 @@ public class NewReportTask extends AsyncTask<Integer, Void, String> {
         try {
 
             DefaultHttpClient httpclient = new DefaultHttpClient(new BasicHttpParams());
-            HttpPost httppost = new HttpPost("http://hecosire.com/api/v1/records");
+            HttpPost httppost = new HttpPost(MyApplication.RECORDS_API_URL);
 
             httppost.setEntity(new StringEntity("{ \"record\": { \"health_state_id\": "+ values[0] +" }}"));
 

@@ -18,7 +18,7 @@ public class MyApplication  extends Application {
     public static final Uri STATS_URL = Uri.parse(APP_URL + "/records/stats");
     public static final Uri RECORDS_URL = Uri.parse(APP_URL +"/records");
     public static final String RECORDS_API_URL = APP_URL + "/api/v1/records";
-    public static final String SIGN_IN_URL =  APP_URL + "api/v1/users/sign_in";
+    public static final String SIGN_IN_URL =  APP_URL + "/api/v1/users/sign_in";
 
     public enum TrackerName {
         APP_TRACKER

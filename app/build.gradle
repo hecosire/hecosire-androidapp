@@ -14,10 +14,11 @@ android {
     defaultConfig {
         applicationId "hecosire.com.hecosireapp"
         testInstrumentationRunner "com.android.test.runner.MultiDexTestRunner"
-        minSdkVersion 21
+        minSdkVersion 19
         targetSdkVersion 21
         versionCode 8
         versionName "1.2.5"
+        multiDexEnabled true
     }
 
     sourceSets {

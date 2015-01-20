@@ -6,11 +6,13 @@ import scala.beans.BeanProperty
 
 object UserToken {
 
+  val MISSING_VALUE: String = "MISSING"
+
   def getUserToken(context: Context): UserToken = {
     val sharedPref = context.getSharedPreferences(context.getString(R.string.preference_file_key), Context.MODE_PRIVATE)
-    val email = sharedPref.getString(context.getString(R.string.emailPreferenceKey), "MISSING")
-    val token = sharedPref.getString(context.getString(R.string.tokenPreferenceKey), "MISSING")
-    if ("MISSING" == email || "MISSING" == token) {
+    val email = sharedPref.getString(context.getString(R.string.emailPreferenceKey), MISSING_VALUE)
+    val token = sharedPref.getString(context.getString(R.string.tokenPreferenceKey), MISSING_VALUE)
+    if (MISSING_VALUE == email || MISSING_VALUE == token) {
       val goToNextActivity = new Intent(context.getApplicationContext, classOf[LoginActivity])
       context.startActivity(goToNextActivity)
       return null

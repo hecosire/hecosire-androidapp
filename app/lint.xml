@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
-    <issue id="InvalidPackage"  severity="ignore">
-    </issue>
+  <issue id="InvalidPackage">
+    <ignore path="**/scala-library-2.11.4.jar" />
+    <ignore path="**/scala-reflect-2.11.4.jar" />
+  </issue>
 </lint>

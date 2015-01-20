@@ -22,9 +22,6 @@ public class DailyNotificationAlarm extends BroadcastReceiver {
         PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
         PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "");
         wl.acquire();
-
-        // Put here YOUR code.
-        //Toast.makeText(context, "Alarm" + new Date(), Toast.LENGTH_SHORT).show(); // For example
         newReportNotification(context, intent);
         wl.release();
     }

@@ -1,3 +1,9 @@
+-dontoptimize
+-dontobfuscate
+-dontpreverify
+-dontwarn scala.**
+-ignorewarnings
+
 # Add project specific ProGuard rules here.
 # By default, the flags in this file are appended to flags specified
 # in /Users/grzegorzdziemidowicz/code_fun/andorid/adt-bundle-mac-x86_64-20130522/sdk/tools/proguard/proguard-android.txt

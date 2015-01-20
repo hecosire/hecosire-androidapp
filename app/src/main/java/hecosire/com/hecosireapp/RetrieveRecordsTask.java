@@ -16,10 +16,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-class UnauthorizedException extends Exception {
-
-}
-
 public class RetrieveRecordsTask extends AsyncTask<String, Void, JSONArray> {
 
     private Exception exception;

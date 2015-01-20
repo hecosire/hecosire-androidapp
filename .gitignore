@@ -7,3 +7,5 @@
 /build
 smartExtensionAPI/build/
 smartExtensionUtils/build/
+app/app-release.apk
+app/manifest-merger-release-report.txt

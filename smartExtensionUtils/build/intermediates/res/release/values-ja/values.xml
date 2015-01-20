@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- From: file:/Users/grzegorzdziemidowicz/AndroidStudioProjects/HecosireApp/smartExtensionUtils/src/main/res/values-ja/headset_pro.xml -->
-    <eat-comment/>
-    <dimen name="headset_pro_text_size">16px</dimen>
-</resources>

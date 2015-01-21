@@ -41,6 +41,11 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         setContentView(R.layout.activity_main);
 
@@ -51,7 +56,6 @@ public class MainActivity extends Activity {
             ((MyApplication) getApplication()).reportScreenView("Main view");
         }
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

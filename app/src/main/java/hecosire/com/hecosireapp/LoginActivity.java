@@ -32,7 +32,7 @@ public class LoginActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        
+
         setContentView(R.layout.activity_login);
 
         emailEdit = ((FloatLabel)findViewById(R.id.emailText)).getEditText();

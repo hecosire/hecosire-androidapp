@@ -27,7 +27,12 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        
         setContentView(R.layout.activity_login);
 
         emailEdit = ((FloatLabel)findViewById(R.id.emailText)).getEditText();
@@ -41,7 +46,6 @@ public class LoginActivity extends Activity {
 
         ((MyApplication)getApplication()).reportScreenView("Login view");
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,7 +89,7 @@ public class LoginActivity extends Activity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString(getString(R.string.emailPreferenceKey), email);
         editor.putString(getString(R.string.tokenPreferenceKey), token);
-        editor.commit();
+        editor.apply();
 
         Intent goToNextActivity = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(goToNextActivity);

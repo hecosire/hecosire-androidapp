@@ -106,7 +106,7 @@ public class MainActivity extends Activity {
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.remove(getString(R.string.emailPreferenceKey));
         editor.remove(getString(R.string.tokenPreferenceKey));
-        editor.commit();
+        editor.apply();
         userToken = null;
         login();
     }

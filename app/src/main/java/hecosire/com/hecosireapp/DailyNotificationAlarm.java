@@ -14,6 +14,8 @@ import java.util.Calendar;
 
 public class DailyNotificationAlarm extends BroadcastReceiver {
 
+    private static final String TAG = "DailyNotificationAlarm";
+
     public static int NOTIFICATION_ID = 001;
     public static int ALARM_ID = 002;
 
@@ -57,14 +59,33 @@ public class DailyNotificationAlarm extends BroadcastReceiver {
 
         AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, 20);
-        calendar.set(Calendar.MINUTE, 00);
-
+        Calendar nextAlarm = getNextAlarmCalendar();
 
         PendingIntent pi = createAlarmPendingIntent(context);
-        am.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_HALF_DAY, pi); // Millisec * Second * Minute
+
+        Log.d(TAG, "Alarm set to: " + nextAlarm.getTime().toString());
+        am.setInexactRepeating(AlarmManager.RTC_WAKEUP, nextAlarm.getTimeInMillis(), AlarmManager.INTERVAL_HALF_DAY, pi); // Millisec * Second * Minute
+    }
+
+    private Calendar getNextAlarmCalendar() {
+        Calendar now = Calendar.getInstance();
+
+        Calendar nextAlarm = Calendar.getInstance();
+        nextAlarm.setTimeInMillis(System.currentTimeMillis());
+        nextAlarm.set(Calendar.HOUR_OF_DAY, 20);
+        nextAlarm.set(Calendar.MINUTE, 00);
+        nextAlarm.set(Calendar.SECOND, 00);
+
+        if (tooLateForToday(now, nextAlarm)) {
+            nextAlarm.add(Calendar.DAY_OF_MONTH, 1);
+            nextAlarm.set(Calendar.HOUR_OF_DAY, 8);
+        }
+        return nextAlarm;
+    }
+
+    private boolean tooLateForToday(Calendar now, Calendar nextAlarm) {
+        return now.get(Calendar.HOUR_OF_DAY) >= nextAlarm.get(Calendar.HOUR_OF_DAY) &&
+                now.get(Calendar.MINUTE) >= nextAlarm.get(Calendar.MINUTE);
     }
 
     public void CancelAlarm(Context context) {

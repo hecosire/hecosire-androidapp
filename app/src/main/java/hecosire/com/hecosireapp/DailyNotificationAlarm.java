@@ -76,14 +76,23 @@ public class DailyNotificationAlarm extends BroadcastReceiver {
         nextAlarm.set(Calendar.MINUTE, 00);
         nextAlarm.set(Calendar.SECOND, 00);
 
-        if (tooLateForToday(now, nextAlarm)) {
+        if (shouldBeTomorrow(now, nextAlarm)) {
             nextAlarm.add(Calendar.DAY_OF_MONTH, 1);
             nextAlarm.set(Calendar.HOUR_OF_DAY, 8);
         }
+
+        if (shouldBeInTheMorning(now, nextAlarm)) {
+            nextAlarm.set(Calendar.HOUR_OF_DAY, 8);
+        }
+
         return nextAlarm;
     }
 
-    private boolean tooLateForToday(Calendar now, Calendar nextAlarm) {
+    private boolean shouldBeInTheMorning(Calendar now, Calendar nextAlarm) {
+        return now.get(Calendar.HOUR_OF_DAY) < 8;
+    }
+
+    private boolean shouldBeTomorrow(Calendar now, Calendar nextAlarm) {
         return now.get(Calendar.HOUR_OF_DAY) >= nextAlarm.get(Calendar.HOUR_OF_DAY) &&
                 now.get(Calendar.MINUTE) >= nextAlarm.get(Calendar.MINUTE);
     }

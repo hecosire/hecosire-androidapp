@@ -3,6 +3,8 @@
 -dontpreverify
 -dontwarn scala.**
 -ignorewarnings
+-keep public class hecosire.com.hecosireapp.**
+-keep public class hecosire.com.hecosireapp.LoginTask
 
 # Add project specific ProGuard rules here.
 # By default, the flags in this file are appended to flags specified

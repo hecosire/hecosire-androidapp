@@ -9,3 +9,5 @@ android/support/multidex/MultiDexExtractor.class
 android/support/multidex/ZipUtil$CentralDirectory.class
 android/support/multidex/ZipUtil.class
 com/android/test/runner/MultiDexTestRunner.class
+hecosire/com/hecosireapp/LoginTask.class
+

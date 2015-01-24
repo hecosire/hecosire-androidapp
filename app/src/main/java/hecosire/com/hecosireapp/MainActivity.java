@@ -125,42 +125,8 @@ public class MainActivity extends Activity {
         logout();
     }
 
-    public void userRecords(JSONArray feed) {
-
-        List<Map<String, String>> data = new ArrayList<Map<String, String>>();
-
-        String ALT_DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
-        SimpleDateFormat sdf = new SimpleDateFormat(
-                ALT_DATE_TIME_FORMAT);
-
-        SimpleDateFormat nicer_sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
-
-        for (int i = 0; i < feed.length(); i++) {
-            try {
-                JSONObject jsonobject = feed.getJSONObject(i);
-                JSONObject health_state = jsonobject.getJSONObject("health_state");
-
-                String name = health_state.getString("name");
-                String created_at = jsonobject.getString("created_at");
-
-                Map<String, String> datum = new HashMap<String, String>(2);
-                Date date = sdf.parse(created_at);
-
-                Calendar instance = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-                instance.setTime(date);
-
-                datum.put("title", name);
-                datum.put("date", nicer_sdf.format(instance.getTime()));
-                data.add(datum);
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-        }
-
-        SimpleAdapter adapter = new SimpleAdapter(this, data,
+    public void userRecords(UserRecords records) {
+        SimpleAdapter adapter = new SimpleAdapter(this, records.getRecords(),
                 android.R.layout.simple_list_item_2,
                 new String[]{"title", "date"},
                 new int[]{android.R.id.text1,

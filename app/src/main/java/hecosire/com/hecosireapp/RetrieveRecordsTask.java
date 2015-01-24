@@ -87,6 +87,6 @@ public class RetrieveRecordsTask extends AsyncTask<String, Void, JSONArray> {
             return;
         }
 
-        activity.userRecords(feed);
+        activity.userRecords(new UserRecords(feed));
     }
 }
